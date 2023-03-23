@@ -1,0 +1,14 @@
+
+
+<div class="calendar">
+    <div class="calendar-header">
+      <h2>{{ calendarDays[0] | date: 'MMMM y' }}</h2>
+    </div>
+    <div class="calendar-days">
+      <div class="calendar-day" *ngFor="let day of calendarDays">
+        <span class="day-number">{{ day | date: 'd' }}</span>
+        <span class="day-name">{{ day | date: 'EEE' }}</span>
+      </div>
+    </div>
+</div>
+

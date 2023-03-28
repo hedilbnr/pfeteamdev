@@ -7,6 +7,13 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LoginComponent } from './login/login.component';
+
+
 
 @NgModule({
   imports: [
@@ -17,12 +24,18 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+   
+    
+    
+
+    
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    LoginComponent,
     
-
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

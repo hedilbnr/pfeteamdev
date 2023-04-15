@@ -1,11 +1,20 @@
+
+
 <div class="main-content">
   <div class="container-fluid">
+
+    <div class="text-center">{{ time | date: 'hh:mm:ss a' }}</div>
+
       <div class="row">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">liste d'employés</h4>
-                      <button type="button" class="btn btn-light">Ajouter un employé </button>
+                  <div class=" card-header card-header-danger">
+                    
+
+                      <h4 class=" card-title ">liste d'employés</h4>
+
+                        <button class=" btn btn-light" style="float: right;">Ajouter un employé </button>
+                        
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -15,18 +24,25 @@
                                       Nom
                                   </th>
                                   <th>
-                                      Prénom
+                                      Prenom
                                   </th>
                                   <th>
                                       Email
                                   </th>
-                                  <th>
+                                  <!-- <th>
                                       Statut
-                                  </th>
-                                  <th>
-                                  </th>
+                                  </th> -->
+                                  
                                   
                               </thead>
+                              <tbody>
+                                <tr *ngFor="let data of users">
+                                    <td>{{ data.nom }}</td>
+                                    <td>{{ data.prenom }}</td>
+                                    <td>{{ data.email }}</td>
+                                    <!-- <td>{{ data.Statut }}</td> -->
+                                </tr>
+                              </tbody>
                               <!--<tbody>
                                   <tr>
                                       <td>

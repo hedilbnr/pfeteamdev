@@ -1,0 +1,11 @@
+
+.fontawesomeicon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+ }
+
+.Eye::before {
+   font: var(--fa-font-solid);
+    content: ' \f06e';
+ }

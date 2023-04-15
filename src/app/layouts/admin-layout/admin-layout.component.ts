@@ -11,6 +11,7 @@ import { filter, Subscription } from 'rxjs';
   styleUrls: ['./admin-layout.component.scss']
 })
 export class AdminLayoutComponent implements OnInit {
+  selectedDate: Date = new Date();
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];

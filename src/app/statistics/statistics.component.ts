@@ -1,15 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { multi } from 'app/data';
-import { single } from 'rxjs';
+import { multi } from '../data';
+
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
+
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent {
+   single = [
+    {
+      "name": "Germany",
+      "value": 8940000
+    },
+    {
+      "name": "USA",
+      "value": 5000000
+    },
+    {
+      "name": "France",
+      "value": 7200000
+    },
+      {
+      "name": "UK",
+      "value": 6200000
+    }
+  ];
   multi: any[];
   view: any[] = [700, 400];
+  view2: any[] = [800, 500];
+
 
   // options
   showXAxis: boolean = true;
@@ -21,6 +42,10 @@ export class StatisticsComponent {
   showYAxisLabel: boolean = true;
   yAxisLabel: string = 'Minutes';
   legendTitle: string = 'Arrivée';
+  isDoughnut: boolean = false;
+  legendPosition: string = 'below';
+  showLabels: boolean = true;
+
 
   colorScheme = {
     domain: ['#5AA454', '#C7B42C', '#AAAAAA']
@@ -28,6 +53,8 @@ export class StatisticsComponent {
 
   constructor() {
     Object.assign(this, { multi })
+    
+
   }
 
  onSelect(data): void {
@@ -42,3 +69,4 @@ export class StatisticsComponent {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }
+

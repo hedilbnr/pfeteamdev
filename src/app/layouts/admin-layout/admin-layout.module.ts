@@ -17,10 +17,11 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { CalendarComponent } from 'app/calendar/calendar.component';
-import { StatisticsComponent } from 'app/statistics/statistics.component';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarComponent } from '../../calendar/calendar.component';
+import { StatisticsComponent } from '../../statistics/statistics.component';
 
 
 @NgModule({
@@ -48,8 +49,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     NotificationsComponent,
     UpgradeComponent,
     CalendarComponent,
-    StatisticsComponent,
-   
+    StatisticsComponent
+
+    
+    
   ]
 })
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { PointageService } from '../../services/pointage.service';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +10,11 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  pointages: any;
 
-  constructor() { }
+
+  constructor(private pointageService:PointageService) { }
+  
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -65,6 +71,7 @@ export class DashboardComponent implements OnInit {
 
       seq2 = 0;
   };
+  
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
@@ -145,6 +152,22 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+      
+    this.getpointages()
+
+  }
+  getpointages(){
+    this.pointageService.getpointages()
+    .subscribe(data=>{
+      console.log("*".repeat(50),data)
+      this.pointages=data
+    },err=>{
+      console.log(err)
+    })
   }
 
 }
+function DetailsDialogComponent(DetailsDialogComponent: any) {
+  throw new Error('Function not implemented.');
+}
+

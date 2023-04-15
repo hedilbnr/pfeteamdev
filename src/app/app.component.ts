@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -27,12 +28,16 @@ import {
 })
 export class AppComponent  implements OnInit{
   
+  
+  
   Events=[]
   calendarOptions !:CalendarOptions
   onDateClick(res:{dateStr:string}){
     alert("You clicked on :"+res.dateStr)
   }
+  
   constructor(){
+  
   }
   ngOnInit(){
     setTimeout(()=>{

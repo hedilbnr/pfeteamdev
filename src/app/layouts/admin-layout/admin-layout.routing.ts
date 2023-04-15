@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { EmployeeProfileComponent } from '../../employee-profile/employee-profile.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
@@ -8,8 +7,12 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { CalendarComponent } from 'app/calendar/calendar.component';
-import { StatisticsComponent } from 'app/statistics/statistics.component';
+
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { CalendarComponent } from '../../calendar/calendar.component';
+import { StatisticsComponent } from '../../statistics/statistics.component';
+
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -64,6 +67,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'calendar',        component: CalendarComponent },
     { path: 'statistics',        component: StatisticsComponent },
+
 
    
 ];

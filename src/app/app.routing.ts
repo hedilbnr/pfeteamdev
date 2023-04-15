@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes =[
-
+  
   {
     path: '',
     redirectTo: 'login',
@@ -24,7 +24,6 @@ const routes: Routes =[
     }]
   },
   { path: 'login', component: LoginComponent }
-
 ];
 
 @NgModule({
@@ -32,7 +31,7 @@ const routes: Routes =[
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes,{
-       useHash: true
+       //useHash: true
     })
   ],
   exports: [

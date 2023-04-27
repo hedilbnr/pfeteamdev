@@ -13,5 +13,8 @@ export class PointageService {
   getpointages():Observable<any>{
     return this.httpClient.get(this.baseurl+'pointage/today')
   }
+  getALLpointages():Observable<any>{
+    return this.httpClient.get(this.baseurl+'pointage')
+  }
 
 }

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { EmployeeProfileComponent} from '../../employee-profile/employee-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
+import { EmployeeListComponent } from '../../employeeList/employeeList.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
@@ -42,14 +42,15 @@ import { StatisticsComponent } from '../../statistics/statistics.component';
   declarations: [
     DashboardComponent,
     EmployeeProfileComponent,
-    TableListComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
     CalendarComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    EmployeeListComponent
+
 
     
     

@@ -11,7 +11,7 @@ const routes: Routes =[
   
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'admin-layout',
     pathMatch: 'full',
   }, 
   { path: 'admin-layout', component: AdminLayoutComponent },

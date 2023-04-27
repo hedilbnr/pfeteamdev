@@ -5,15 +5,15 @@
 
     <div class="text-center">{{ time | date: 'hh:mm:ss a' }}</div>
 
-      <div class="row">
+      <div class="row" style="background-color: rgb(32, 83, 8);">
           <div class="col-md-12">
-              <div class="card">
-                  <div class=" card-header card-header-danger">
+              <div class="card" >
+                  <div class=" card-header card-header-success" style="background-color: rgb(32, 83, 8);">
                     
 
                       <h4 class=" card-title ">liste d'employés</h4>
 
-                        <button class=" btn btn-light" style="float: right;">Ajouter un employé </button>
+                        <button class=" btn btn-secondary" style="float: right;" (click)="openDialog()" >Ajouter un employé </button>
                         
                   </div>
                   <div class="card-body">

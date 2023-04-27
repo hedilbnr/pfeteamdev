@@ -28,6 +28,7 @@ export class EmployeeProfileComponent {
     { name: 'Bob', hours: [9, 8, 8, 9, 7] },
     { name: 'Alice', hours: [6, 7, 7, 6, 8] },
   ];
+ 
 
   getTotalHours(hours: number[]): number {
     return hours.reduce((acc, curr) => acc + curr, 0);

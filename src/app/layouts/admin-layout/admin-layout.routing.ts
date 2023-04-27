@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { EmployeeProfileComponent } from '../../employee-profile/employee-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
+import { EmployeeListComponent } from '../../employeeList/employeeList.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
@@ -59,7 +59,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'employee-profile',   component: EmployeeProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
+    { path: 'employeeList',     component: EmployeeListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },

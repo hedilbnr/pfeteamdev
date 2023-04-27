@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import * as Chartist from 'chartist';
 import { PointageService } from '../../services/pointage.service';
-
-
+import { PointageDialogComponent } from '../components/pointage-dialog/pointage-dialog.component';
+import { FormControl } from '@angular/forms';
+import { throwError } from 'rxjs';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +13,27 @@ import { PointageService } from '../../services/pointage.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  pointages: any;
+  pointages: any[];
+  allPointages: any[];
+  myPointages: any[];
+  httpClient: any;
 
-
-  constructor(private pointageService:PointageService) { }
   
+  constructor(private pointageService:PointageService, private dialog: MatDialog) { }
+  
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px'; 
+    const dialogRef = this.dialog.open(PointageDialogComponent, 
+      {
+        data:{
+          message:this.allPointages
+        }
+      }
+);
+console.log("get all pointages" + data);
+  }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -154,16 +173,33 @@ export class DashboardComponent implements OnInit {
       this.startAnimationForBarChart(websiteViewsChart);
       
     this.getpointages()
+    this.getAllpointages()
 
   }
+  
   getpointages(){
     this.pointageService.getpointages()
     .subscribe(data=>{
       console.log("*".repeat(50),data)
-      this.pointages=data
+      this.pointages=data;
+     
     },err=>{
+
       console.log(err)
     })
+
+  }
+  getAllpointages(){
+    this.pointageService.getALLpointages()
+    .subscribe(data=>{
+      console.log("*".repeat(50),data)
+      this.allPointages=data;
+     
+    },err=>{
+
+      console.log(err)
+    })
+    
   }
 
 }

@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import * as Chartist from 'chartist';
+import { PointageService } from '../../services/pointage.service';
+import { PointageDialogComponent } from '../components/pointage-dialog/pointage-dialog.component';
+import { FormControl } from '@angular/forms';
+import { throwError } from 'rxjs';
+import { data } from 'jquery';
+import { EmployeeService } from '../../services/employee.service';
+import { CongeService } from '../../services/conge.service';
+import { id } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +16,33 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  pointages: any[];
+  allPointages: any[];
+  myPointages: any[];
+  httpClient: any;
+  nbutilisateur=0;
+  nbPresent=0;
+  nbConge=0;
+  nbRetard:any;
+  user:any;
+  
+  constructor(private pointageService:PointageService,private employeeService:EmployeeService,private congeService:CongeService, private dialog: MatDialog) { }
+  
 
-  constructor() { }
+  openDialog(data:any) {
+    console.log("*************",data)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px'; 
+    const dialogRef = this.dialog.open(PointageDialogComponent, 
+      {
+        data:{
+         // message:this.allPointages,
+          idUser:data.id
+        }
+      }
+);
+console.log("get all pointages" + data);
+  }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -65,7 +99,9 @@ export class DashboardComponent implements OnInit {
 
       seq2 = 0;
   };
+  
   ngOnInit() {
+     this.user = localStorage.getItem('USER')
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -145,6 +181,82 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+      
+    this.getpointages();
+   // this.getAllpointages();
+    this.getNumberutilisateur();
+    this.getnbPresent();
+    this.getnbConge();
+    this.getnbRetard();
+    
+    
+
+  }
+  getnbRetard(){
+    this.pointageService.getnbRetard().
+    subscribe(data=>{
+      this.nbRetard=data;
+    },err=>{
+
+      console.log(err)
+    
+    })
+  }
+  getnbConge(){
+    this.congeService.getnbConge().
+    subscribe(data=>{
+      this.nbConge=data;
+    },err=>{
+
+      console.log(err)
+    
+    })
+  }
+  getnbPresent(){
+    this.congeService.getnbPresent().
+    subscribe(data=>{
+      this.nbPresent=data;
+    },err=>{
+
+      console.log(err)
+    
+    })
+  }
+  
+  getpointages(){
+    this.pointageService.getpointages()
+    .subscribe(data=>{
+      this.pointages=data;
+     
+    },err=>{
+
+      console.log(err)
+    })
+
+  }
+ 
+  getAllpointages(){
+    this.pointageService.getALLpointages(id)
+    .subscribe(data=>{
+      this.allPointages=data;
+     
+    },err=>{
+
+      console.log(err)
+    })
+    
+  }
+  getNumberutilisateur(){
+    this.employeeService.getutilisateur()
+    .subscribe(data=>{
+      this.nbutilisateur=data
+    },err=>{
+      console.log(err)
+    })
   }
 
 }
+function DetailsDialogComponent(DetailsDialogComponent: any) {
+  throw new Error('Function not implemented.');
+}
+

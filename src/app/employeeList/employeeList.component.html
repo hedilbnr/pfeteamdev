@@ -1,32 +1,77 @@
+
+
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
+
+    <div class="text-center">{{ time | date: 'hh:mm:ss a' }}</div>
+
+      <div class="row" style="background-color: rgb(223, 233, 218);">
           <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">liste d'employés</h4>
-                      <button type="button" class="btn btn-light">Ajouter un employé </button>
+              <div class="card" >
+                  <div class=" card-header card-header-info">
+                    
+
+                      <h4 class=" card-title ">liste d'employés</h4>
+
+                        <button class=" btn btn-secondary" style="float: right;" (click)="openDialog()" >Ajouter un employé </button>
+                        
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
                           <table class="table">
-                              <thead class=" text-primary">
+                              <thead class=" text-info">
+                                  <th>
+                                      ID
+                                  </th>
                                   <th>
                                       Nom
                                   </th>
                                   <th>
-                                      Prénom
+                                      Prenom
                                   </th>
                                   <th>
                                       Email
                                   </th>
                                   <th>
-                                      Statut
-                                  </th>
-                                  <th>
+                                      Options
                                   </th>
                                   
+                                  <!-- <th>
+                                      Statut
+                                  </th> -->
+                                  
+                                  
                               </thead>
+                              <tbody>
+                                <tr *ngFor="let data of users">
+                                    <td>{{data.id}}</td>
+                                    <td>{{ data.nom }}</td>
+                                    <td>{{ data.prenom }}</td>
+                                    <td>{{ data.email }}</td>
+                                    <td (click)="navigateToProfile(data.id)">    <button mat-raised-button color="primary">Voir Profile</button>
+                                        </td>
+                                    <td>     
+                                        <span class="material-icons" style="color: rgb(88, 209, 233);"(click)="EditUser(data.id)" (click)="navigateToEdit(data.id)">edit</span>
+                                        <!-- <button mat-raised-button (click)="EditUser(data.id)" (click)="navigateToEdit(data.id)" >Edit</button>            -->
+                                                             </td>
+                                    <td> 
+                                        <!-- <i class="fa-solid fa-trash"
+                                         (click)="deleteUser(data.id)"  ></i> -->
+                                         <span class="material-icons"style="color: rgb(0, 0, 255);" (click)="deleteUser(data.id)">delete</span>
+                                        <!-- <button mat-raised-button  color="primary" (click)="deleteUser(data.id)">Delete</button> -->
+                                    </td>
+                                    <td> 
+                                        <span class="material-icons" style="color: rgb(88, 209, 233);" (click)="openModal()">add_photo_alternate</span>
+                                        <!-- <button mat-raised-button  color="primary" (click)="openModal()">Ajouter Photo</button> -->
+                                    </td>
+
+
+
+
+
+                                    <!-- <td>{{ data.Statut }}</td> -->
+                                </tr>
+                              </tbody>
                               <!--<tbody>
                                   <tr>
                                       <td>

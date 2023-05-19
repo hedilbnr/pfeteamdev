@@ -1,65 +1,79 @@
-<div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                  <div class="card-header card-header-warning card-header-icon">
-                      <div class="card-icon">
-                          <i class="material-icons">content_copy</i>
-                      </div>
-                      <p class="card-category">le nombre total d'employés</p>
-                      <h3 class="card-title">
-                          <small></small>
-                      </h3>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          <i class="material-icons text-danger">warning</i>
-                          <a href="javascript:void(0)">Get More Space...</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                  <div class="card-header card-header-success card-header-icon">
-                      <div class="card-icon">
-                          <i class="material-icons">store</i>
-                      </div>
-                      <p class="card-category">le nombre de salariés présents</p>
-                      <h3 class="card-title"></h3>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          <i class="material-icons">date_range</i> Last 24 Hours
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                  <div class="card-header card-header-danger card-header-icon">
-                      <div class="card-icon">
-                          <i class="material-icons">info_outline</i>
-                      </div>
-                      <p class="card-category">le nombre de salariés en congé</p>
-                      <h3 class="card-title">75</h3>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          <i class="material-icons">local_offer</i> Tracked from Github
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                  
-                
-              </div>
-          </div>
-      </div>
-         <!--<div class="row">
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">people</i>                        </div>
+                        <p class="card-category" >  Nombre total d'employés</p>
+                        <h3 class="card-title">{{nbutilisateur}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">verified</i>
+                        </div>
+                        <p class="card-category">Employés présents</p>
+                        <h3 class="card-title">{{nbPresent}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">outbound</i>
+                        </div>
+                        <p class="card-category">Employés en congé</p>
+                        <h3 class="card-title">{{nbConge}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons" >watch_later</i>
+                        </div>
+                        <p class="card-category" > Employés en retard</p>
+                        <h3 class="card-title">{{nbRetard}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                           
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="card card-stats">
+
+
+                </div>
+            </div>
+        </div>
+        <!--<div class="row">
           <div class="col-md-4">
               <div class="card card-chart">
                   <div class="card-header card-header-success">
@@ -94,7 +108,8 @@
               </div>
           </div>
       </div>  -->
-      <div class="row"> <!--
+        <div class="row">
+            <!--
          <div class="col-lg-6 col-md-12">
               <div class="card">
                   <div class="card-header card-header-tabs card-header-primary">
@@ -340,23 +355,41 @@
                   </div>
               </div>
         </div>-->
-          <div class="col-lg-12 col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-warning">
-                      <h4 class="card-title">Liste de présence d'employés</h4>
-                      <p class="card-category"></p>
-                  </div>
-                  <div class="card-body table-responsive">
-                      <table class="table table-hover">
-                          <thead class="text-warning">
-                              <th>Nom</th>
-                              <th>Prénom</th>
-                              <th>Heure d'entrée </th>
-                              <th>Heure de sortie </th>
-                              <th >
-                              </th>
-                          </thead>
-                         <!-- <tbody>
+            <div class="col-lg-12 col-md-12" style="background-color: info">
+                <div class="card"  >
+                    <div class="card-header card-header-info" style="background-color: info;" >
+                        <h4 class="card-title" >Liste de présence d'employés</h4>
+                        <p class="card-category"   style="background-color: info;"></p>
+                    </div>
+                    <div class="card-body table-responsive" >
+                        <table class="table table-hover">
+                            <thead class="text-info" >
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Heure d'entrée </th>
+                                <th>Heure de sortie </th>
+                                <th>
+                                   Pointages
+                                </th>
+
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of pointages">
+                                    <td>{{ data.nom }}</td>
+                                    <td>{{ data.prenom }}</td>
+                                   <!-- <td>{{ data.date |date: 'yyyy-MM-dd'  }}</td>-->
+                                    <td>{{ data.heure_entree |date :'yyyy-MM-dd HH:mm'}}</td>
+                                    <td>{{ data.heure_sortie |date :'yyyy-MM-dd HH:mm'}}</td>
+                                    <td>
+                                        <i class="fa fa-eye" aria-hidden="true" (click)="openDialog(data)"></i>
+                                    </td>
+
+                                    
+                                    <!-- <td>{{ data.Statut }}</td> -->
+                                </tr>
+                              </tbody>
+                            <!-- <tbody>
                               <tr>
                                   <td>1</td>
                                   <td>Dakota Rice</td>
@@ -382,10 +415,14 @@
                                   <td>Korea, South</td>
                               </tr>
                           </tbody>-->
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+

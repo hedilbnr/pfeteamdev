@@ -1,14 +1,20 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { EmployeeProfileComponent } from '../../employee-profile/employee-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
+import { EmployeeListComponent } from '../../employeeList/employeeList.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { CalendarComponent } from 'app/calendar/calendar.component';
+
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { CalendarComponent } from '../../calendar/calendar.component';
+import { StatisticsComponent } from '../../statistics/statistics.component';
+import { EditComponent } from '../../edit/edit.component';
+import { AuthGuard } from './../../auth.guard';
+
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -53,13 +59,22 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'employee-profile',   component: EmployeeProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
+    { path: 'dashboard',      component: DashboardComponent,canActivate: [AuthGuard],data:{role:'administrateur'} },
+    { path: 'employee-profile/:id',   component: EmployeeProfileComponent,canActivate: [AuthGuard], data: { expectedRole: ['employé','administrateur'] }},
+    { path: 'employeeList',     component: EmployeeListComponent,canActivate: [AuthGuard],data:{role:'administrateur'}},
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'calendar',        component: CalendarComponent },
+    { path: 'calendar',        component: CalendarComponent ,canActivate: [AuthGuard], data: { expectedRole:'employee'  }},
+    { path: 'statistics',        component: StatisticsComponent ,canActivate: [AuthGuard],data:{role:'administrateur'} },
+     {path:'EditEmployee/:id' , component:EditComponent}
+   /*  { path: 'dashboard', component: DashboardComponent ,
+    canActivate: [AuthGuard],data:{role:'admin'},*/
+    
+  
+
+
+   
 ];

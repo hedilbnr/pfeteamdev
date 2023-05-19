@@ -6,6 +6,9 @@ import { PointageDialogComponent } from '../components/pointage-dialog/pointage-
 import { FormControl } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { data } from 'jquery';
+import { EmployeeService } from '../../services/employee.service';
+import { CongeService } from '../../services/conge.service';
+import { id } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,18 +20,24 @@ export class DashboardComponent implements OnInit {
   allPointages: any[];
   myPointages: any[];
   httpClient: any;
-
+  nbutilisateur=0;
+  nbPresent=0;
+  nbConge=0;
+  nbRetard:any;
+  user:any;
   
-  constructor(private pointageService:PointageService, private dialog: MatDialog) { }
+  constructor(private pointageService:PointageService,private employeeService:EmployeeService,private congeService:CongeService, private dialog: MatDialog) { }
   
 
-  openDialog() {
+  openDialog(data:any) {
+    console.log("*************",data)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px'; 
     const dialogRef = this.dialog.open(PointageDialogComponent, 
       {
         data:{
-          message:this.allPointages
+         // message:this.allPointages,
+          idUser:data.id
         }
       }
 );
@@ -92,6 +101,7 @@ console.log("get all pointages" + data);
   };
   
   ngOnInit() {
+     this.user = localStorage.getItem('USER')
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -172,15 +182,50 @@ console.log("get all pointages" + data);
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
       
-    this.getpointages()
-    this.getAllpointages()
+    this.getpointages();
+   // this.getAllpointages();
+    this.getNumberutilisateur();
+    this.getnbPresent();
+    this.getnbConge();
+    this.getnbRetard();
+    
+    
 
+  }
+  getnbRetard(){
+    this.pointageService.getnbRetard().
+    subscribe(data=>{
+      this.nbRetard=data;
+    },err=>{
+
+      console.log(err)
+    
+    })
+  }
+  getnbConge(){
+    this.congeService.getnbConge().
+    subscribe(data=>{
+      this.nbConge=data;
+    },err=>{
+
+      console.log(err)
+    
+    })
+  }
+  getnbPresent(){
+    this.congeService.getnbPresent().
+    subscribe(data=>{
+      this.nbPresent=data;
+    },err=>{
+
+      console.log(err)
+    
+    })
   }
   
   getpointages(){
     this.pointageService.getpointages()
     .subscribe(data=>{
-      console.log("*".repeat(50),data)
       this.pointages=data;
      
     },err=>{
@@ -189,10 +234,10 @@ console.log("get all pointages" + data);
     })
 
   }
+ 
   getAllpointages(){
-    this.pointageService.getALLpointages()
+    this.pointageService.getALLpointages(id)
     .subscribe(data=>{
-      console.log("*".repeat(50),data)
       this.allPointages=data;
      
     },err=>{
@@ -200,6 +245,14 @@ console.log("get all pointages" + data);
       console.log(err)
     })
     
+  }
+  getNumberutilisateur(){
+    this.employeeService.getutilisateur()
+    .subscribe(data=>{
+      this.nbutilisateur=data
+    },err=>{
+      console.log(err)
+    })
   }
 
 }

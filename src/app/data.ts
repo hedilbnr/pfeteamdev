@@ -1,3 +1,9 @@
+export var result=[
+  
+]
+
+
+
 export var multi = [
     {
       "name": "Lundi",
@@ -66,19 +72,10 @@ export var multi = [
           }
         ]
       },
-      {
-        "name": "Samedi",
-        "series": [
-          
-        ]
-      },
-      {
-        "name": "Dimanche ",
-        "series": [
-          
-        ]
-      },
+     
       
   ];
+
+  
   
  

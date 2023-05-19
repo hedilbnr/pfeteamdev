@@ -22,6 +22,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from '../../calendar/calendar.component';
 import { StatisticsComponent } from '../../statistics/statistics.component';
+import {MatCardModule} from '@angular/material/card'; 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -37,7 +39,10 @@ import { StatisticsComponent } from '../../statistics/statistics.component';
     MatSelectModule,
     MatTooltipModule,
     NgxChartsModule, 
-    FullCalendarModule
+    FullCalendarModule,
+    MatCardModule,
+    MatSnackBarModule
+    
   ],
   declarations: [
     DashboardComponent,

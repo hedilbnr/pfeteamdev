@@ -15,10 +15,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import {  MatOptionModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule, DatePipe } from '@angular/common';
+import { FaceRecognitionComponent } from './face-recognition/face-recognition.component';
+import {MatCardModule} from '@angular/material/card';
+import { DeletedialogComponent } from './deletedialog/deletedialog.component';
+import { EditComponent } from './edit/edit.component';
+import { OpenPhotoModalComponent } from './open-photo-modal/open-photo-modal.component'; 
+import { CongedialogComponent } from './components/dialogs/congedialog/congedialog.component';
+
+
+
+
 
 
 
@@ -27,7 +37,7 @@ import { CommonModule, DatePipe } from '@angular/common';
   imports: [
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule ,
     HttpClientModule,
     ComponentsModule,
     RouterModule,
@@ -41,7 +51,12 @@ import { CommonModule, DatePipe } from '@angular/common';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    
+    
+    
+   
   
   ],
   declarations: [
@@ -49,6 +64,11 @@ import { CommonModule, DatePipe } from '@angular/common';
     AdminLayoutComponent,
     LoginComponent,
     AddEmplyeeDialogComponent,
+    FaceRecognitionComponent,
+    DeletedialogComponent,
+    EditComponent,
+    OpenPhotoModalComponent,
+    CongedialogComponent,
     
     
     

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PointageService } from '../../services/pointage.service';
 import { multi } from '../data';
+import { Employee } from '../models/employee.model';
 
 
 @Component({
@@ -9,7 +11,11 @@ import { multi } from '../data';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent {
-   single = [
+  horairesPredefinis: Date[] = []; // Les horaires prédéfinis à récupérer depuis un formulaire ou autre
+
+  pourcentageArrivesALHeure: number;
+  pourcentageRetards: number;
+  single = [
     {
       "name": "Germany",
       "value": 8940000
@@ -21,52 +27,35 @@ export class StatisticsComponent {
     {
       "name": "France",
       "value": 7200000
-    },
-      {
-      "name": "UK",
-      "value": 6200000
     }
   ];
-  multi: any[];
-  view: any[] = [700, 400];
-  view2: any[] = [800, 500];
+  constructor(private pointageService: PointageService) { }
 
-
-  // options
-  showXAxis: boolean = true;
-  showYAxis: boolean = true;
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Jours';
-  showYAxisLabel: boolean = true;
-  yAxisLabel: string = 'Minutes';
-  legendTitle: string = 'Arrivée';
-  isDoughnut: boolean = false;
-  legendPosition: string = 'below';
-  showLabels: boolean = true;
-
-
-  colorScheme = {
-    domain: ['#5AA454', '#C7B42C', '#AAAAAA']
-  };
-
-  constructor() {
-    Object.assign(this, { multi })
-    
-
+  ngOnInit() {
+    this.getPourcentages();
+    //this.getHorairesPredefinis();
   }
+  // getHorairesPredefinis() {
+  //   this.pointageService.getHorairesPredefinis()
+  //     .subscribe(horaires => {
+  //       this.horairesPredefinis = horaires;
+  //       this.getPourcentages();
+  //     });
+  // }
+  getPourcentages() {
+    console.log(this.horairesPredefinis);
+    let dateToSend={
+      dateDebut:"2023-05-04T09:40:00Z"
+    }
+    this.pointageService.getPourcentageArrivesALHeure("2023-05-04T09:40:00Z")
+      .subscribe(pourcentage => {
+        this.pourcentageArrivesALHeure = pourcentage
+        console.log("****",this.pourcentageArrivesALHeure);
+        
+      }
+      );
 
- onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    // this.pointageService.getPourcentageRetards(this.horairesPredefinis)
+    //   .subscribe(pourcentage => this.pourcentageRetards = pourcentage);
   }
 }
-

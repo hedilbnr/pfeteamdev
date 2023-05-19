@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PointageService } from '../../../services/pointage.service';
 import { EmployeeService } from '../../../services/employee.service';
 
 interface Role {
@@ -17,6 +18,9 @@ export class AddEmplyeeDialogComponent implements OnInit {
   user: any;
   userForm = new FormGroup({
     email: new FormControl(null, [Validators.email]),
+    nom: new FormControl(null, [Validators.required]),
+    prenom: new FormControl(null, [Validators.required]),
+
     dateNaiss: new FormControl(null, []),
     role: new FormControl(null, [Validators.required]),
 
@@ -28,14 +32,37 @@ export class AddEmplyeeDialogComponent implements OnInit {
     {     id:152,value: 'Employé' }
 
   ];
+  subject: any;
+  fileInput: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private employeeService:EmployeeService,private dialogRef: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private pointageService:PointageService  ,private employeeService:EmployeeService,private dialogRef: MatDialog) {
     this.user = data.message
   }
+  
+  onClick() {
+    const subjectValue = this.userForm.controls['subject'].value;
+    const fileValue = this.userForm.controls['file'].value;
+
+    this.pointageService.postImage(this.subject, this.file).subscribe(
+      (response) => {
+        // Traitement réussi
+        console.log(response);
+      },
+      (error) => {
+        // Gestion des erreurs
+        console.error(error);
+      }
+    );
+  }
+  file(subject: any, file: any) {
+    throw new Error('Method not implemented.');
+  }
   onSubmit() {
-    console.log(this.userForm);
+  console.log(this.userForm);
  let dataToSend={
    email:this.userForm.value.email,
+   nom:this.userForm.value.nom,
+   prenom:this.userForm.value.prenom,
    role:{
      id:152
    }
@@ -66,7 +93,10 @@ export class AddEmplyeeDialogComponent implements OnInit {
   //   return this.email.hasError('email') ? 'Not a valid email' : '';
   // }
   closeDialog() {
+
     // TODO: Implement close dialog logic
+    this.dialogRef.closeAll();  // Ferme le dialog
+
   }
 
   saveDialog() {

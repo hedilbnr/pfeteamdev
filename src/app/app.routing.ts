@@ -6,15 +6,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
 const routes: Routes =[
   
   {
     path: '',
-    redirectTo: 'admin-layout',
+    redirectTo: 'login',
     pathMatch: 'full',
   }, 
-  { path: 'admin-layout', component: AdminLayoutComponent },
+  /*{ path: 'dashboard', component: DashboardComponent ,
+    canActivate: [AuthGuard],data:{role:'admin'},
+    
+  },*/
+  
+  
   {
     path: '',
     component: AdminLayoutComponent,

@@ -11,6 +11,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { CalendarComponent } from '../../calendar/calendar.component';
 import { StatisticsComponent } from '../../statistics/statistics.component';
+import { EditComponent } from '../../edit/edit.component';
+import { AuthGuard } from './../../auth.guard';
 
 
 
@@ -57,16 +59,21 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'employee-profile',   component: EmployeeProfileComponent },
-    { path: 'employeeList',     component: EmployeeListComponent },
+    { path: 'dashboard',      component: DashboardComponent,canActivate: [AuthGuard],data:{role:'administrateur'} },
+    { path: 'employee-profile/:id',   component: EmployeeProfileComponent,canActivate: [AuthGuard], data: { expectedRole: ['employé','administrateur'] }},
+    { path: 'employeeList',     component: EmployeeListComponent,canActivate: [AuthGuard],data:{role:'administrateur'}},
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'calendar',        component: CalendarComponent },
-    { path: 'statistics',        component: StatisticsComponent },
+    { path: 'calendar',        component: CalendarComponent ,canActivate: [AuthGuard], data: { expectedRole:'employee'  }},
+    { path: 'statistics',        component: StatisticsComponent ,canActivate: [AuthGuard],data:{role:'administrateur'} },
+     {path:'EditEmployee/:id' , component:EditComponent}
+   /*  { path: 'dashboard', component: DashboardComponent ,
+    canActivate: [AuthGuard],data:{role:'admin'},*/
+    
+  
 
 
    

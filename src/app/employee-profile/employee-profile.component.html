@@ -2,3 +2,74 @@
 <br>
 <br>
 <br>
+    <div >
+      <mat-card class="employee-card" >
+        <mat-card-header>
+          <div mat-card-avatar class="employee-header-image"></div>
+          <mat-card-title > {{employee?.nom}}</mat-card-title>
+          <mat-card-subtitle >{{employee?.prenom}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+           <p>Nom:
+            {{employee?.nom}}
+          </p> 
+          <p> Prénom :{{employee?.prenom}}</p>
+          <p> Email : {{employee?.email}}</p>
+
+          <p> Date de Naissance :
+           {{employee?.dateNaiss | date: 'yyyy-MM-dd '}}
+          </p>
+          <p> 
+            Pointages:
+          </p>
+        <ul>
+            <li *ngFor="let pointage of allPointages">{{pointage?.heurePointage |date: 'yyyy-MM-dd HH:mm'}}</li>
+          </ul>
+
+
+          <p> 
+            congé:
+          </p>
+        
+         
+         <!-- <ul>
+        <li *ngFor="let pointage of pointages">{{  <td>{{ data.heure_entree |heure_pointage :'yyyy-MM-dd HH:mm'}}</td> }}</li>
+        </ul> -->
+        <p>Nombre total d\'heures de travail : {{ totalWorkHours  }}
+           </p>
+           <ul>
+             <h4>table de congés</h4>
+            <table border="1">
+             
+              
+              <th>dateDebut</th>
+              <th>dateFin</th>
+              <th>type</th>
+              <th>etat</th>
+              <th>delete</th>
+              <tr *ngFor="let c of employee?.demandeConges">
+  
+               
+                <td>{{c.dateDebut|date: 'yyyy-MM-dd '}}</td>
+                <td>{{c.dateFin|date: 'yyyy-MM-dd '}}</td>
+                <td>{{c.type}}</td>
+                <td>
+                  {{c.etat ? 'Accepted' : 'Not Accepted'}}     
+                </td>
+                <td><form method="post"> <input type="hidden" value="{{c.id}}"><input type="submit" value="supprimer"></form></td>
+  
+              </tr>
+            </table>
+            </ul>
+    
+        <button class="btn btn-info" (click)="openCongeDialog(employee?.id)">Enregistrer un congé</button><br>
+        <br>
+       
+        <button  class="btn btn-info"(click)="openEditModal()">Modifier les données</button>
+       
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    

@@ -16,7 +16,8 @@ import { PointageDialogComponent } from './pointage-dialog/pointage-dialog.compo
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    PointageDialogComponent
+    PointageDialogComponent,
+    
   ],
   exports: [
     FooterComponent,

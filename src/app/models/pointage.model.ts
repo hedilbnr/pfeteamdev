@@ -3,6 +3,7 @@ export class Pointage{
     date: string;
     heure_pointage:string;
     utilisateur:string;
+  heurePointage: any;
     constructor(id: number,
         date:string, heure_pointage:string,
         utlisateur:string){
